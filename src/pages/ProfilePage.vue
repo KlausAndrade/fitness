@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    INDEX PAGE
+    PROFILE PAGE
   </q-page>
 </template>
 

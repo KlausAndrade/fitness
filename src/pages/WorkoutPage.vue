@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    INDEX PAGE
+    WORKOUT PAGE
   </q-page>
 </template>
 

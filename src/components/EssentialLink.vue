@@ -1,14 +1,7 @@
 <template>
-  <q-item
-    clickable
-    tag="a"
-    target="_blank"
-    :href="props.link"
-  >
-    <q-item-section
-      v-if="props.icon"
-      avatar
-    >
+  <q-item clickable :tag="isExternalLink ? 'a' : 'router-link'" :href="isExternalLink ? link : undefined"
+    :to="!isExternalLink ? link : undefined" :target="isExternalLink ? '_blank' : undefined">
+    <q-item-section v-if="props.icon" avatar>
       <q-icon :name="props.icon" />
     </q-item-section>
 
@@ -20,6 +13,8 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
   title: {
     type: String,
@@ -40,5 +35,10 @@ const props = defineProps({
     type: String,
     default: ''
   }
+})
+
+const isExternalLink = computed(() => {
+  // If the link contains "http" or starts with "//", treat it as external
+  return props.link.startsWith('http') || props.link.startsWith('//')
 })
 </script>
